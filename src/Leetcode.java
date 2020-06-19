@@ -88,10 +88,54 @@ public class Leetcode {
 //        }
 
 
-        int i = strToInt("-132456");
-        System.out.println(i);
+//        int i = strToInt("-132456");
+//        System.out.println(i);
+
+//        int[] s = {1,3,1,3,3,3,5,7};
+//        int i = findMajor(s);
+
+        int[] s = {7,1,5,3,6,4};
+        int sold = sold(s);
+        System.out.println(sold);
+    }
+
+
+    public static int sold(int[] arr){
+        if (arr.length == 0) {
+            return 0;
+        }
+        int min = Integer.MAX_VALUE;
+        int maxProfile = 0;
+        for (int i : arr) {
+            if (i < min) {
+                min = i;
+            }
+            maxProfile = Math.max(maxProfile,i - min);
+        }
+        return maxProfile;
+
 
     }
+
+    public static int findMajor(int[] arr){
+        int count = 0;
+        int maj = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (count == 0) {
+                maj = arr[i];
+                count++;
+            }else {
+                if (arr[i] == maj) {
+                    count++;
+                }else {
+                    count--;
+                }
+            }
+        }
+        return maj;
+
+    }
+
 
 
     public TreeNode lowestCommonAncestor(TreeNode<Integer> root, TreeNode<Integer> p, TreeNode<Integer> q) {
